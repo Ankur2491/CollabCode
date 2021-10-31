@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('mainTyping', (data) => {
-        io.sockets.in("room-" + socket.roomnum).emit('mainTyping', data);
+        io.sockets.in("room-" + socket.roomnum).emit('mainTypingFromServer', data);
         // socket.broadcast.emit('mainTyping',data);
     });
 

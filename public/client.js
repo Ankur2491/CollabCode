@@ -1,4 +1,4 @@
-var socket = io.connect("https://collabo-code.herokuapp.com/");
+var socket = io.connect("http://localhost:4000");
 var roomnum;
 $(function () {
     var $userForm = $('#userForm');
@@ -31,7 +31,7 @@ $(function () {
         socket.emit('mainTyping', $event.target.value);
     })
 
-    socket.on('mainTyping', (data) => {
+    socket.on('mainTypingFromServer', (data) => {
         mainText.innerHTML = data;
     });
     msg.addEventListener('keypress', () => {
