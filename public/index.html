@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Collab Code</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link href="/styles.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet">
+</head>
+
+<body class="bg-light" id="Home">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#Home">CollabCode</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger"
+                            href="https://www.linkedin.com/in/ankur-sharma-341446b1/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger"
+                            href="https://github.com/Ankur2491">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div id="userFormArea" class="row">
+            <div class="col-md-12">
+                <p class="lead">CollabCode provides a platform where users can collaborate code along with group chat.
+                </p>
+                <hr style="height:20pt; visibility:hidden;" />
+
+                <h2> Join a Room! </h2>
+                <form id="userForm">
+                    <div class="form-group">
+                        <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
+                        <label>Enter Name</label>
+                        <input class="form-control" id="username" />
+                        <br />
+                        <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
+                        <label>Enter Room ID</label>
+                        <br />
+                        <input class="form-control" id="roomnum" />
+                        <br />
+
+                        <input style="margin-top: 10px;" type="submit" class="btn btn-primary" value="Enter" />
+                        <hr style="height:65pt; visibility:hidden;" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="roomArea">
+            <div class="row my-4" style="margin-top: 0px !important;">
+                <div class="col-lg-7">
+                    <h2><span id="hostlabel" class="label label-default"><i class="fas fa-user"></i> Current Host:
+                        </span></h2>
+                    <textarea id="mainText" rows="30" cols="70" placeholder="Enter text here"></textarea>
+                    <div id="visual-queue" class="vid-list-container">
+                        <ul class="vid-list" id="vidlist">
+                            <li class="vid-item">
+                            </li>
+                        </ul>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="col-md-4">
+                        <div id="onlineArea" class="row">
+                            <h5 class="right-header">Online Users</h5>
+                            <hr style="height:0pt; visibility:hidden;" />
+                            <div class="col-md-13">
+                                <div class="well online-users noscrollbar">
+                                    <ul class="list-group" id="users"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="height:0pt; visibility:hidden;" />
+                    <h5 style="color:gray;">Chatroom</h5>
+
+                    <div id="messageArea" class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="chat noscrollbar" id="chat"></div>
+                            <form id="messageForm">
+                                <div class="form-group">
+                                    <br />
+                                    <div id="feedback"></div>
+                                    <input class="form-control chat-form" id="message" placeholder="Enter Message..." />
+                                    <br />
+                                    <br />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/client.js"></script>
+</body>
+
+</html>
