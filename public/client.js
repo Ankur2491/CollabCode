@@ -32,7 +32,7 @@ $(function () {
     })
 
     socket.on('mainTypingFromServer', (data) => {
-        mainText.innerHTML = data;
+        mainText.value = data;
     });
     msg.addEventListener('keypress', () => {
         socket.emit('typing', $username.val());
