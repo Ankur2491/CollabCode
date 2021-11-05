@@ -28,11 +28,13 @@ $(function () {
     });
 
     mainText.addEventListener('keyup', ($event) => {
-        socket.emit('mainTyping', $event.target.value);
+        let data = { 'val': $event.target.value, 'from': $username.val() }
+        socket.emit('mainTyping', data);
     })
 
     socket.on('mainTypingFromServer', (data) => {
-        mainText.value = data;
+        if (data.from != $username.val())
+            mainText.value = data.val;
     });
     msg.addEventListener('keypress', () => {
         socket.emit('typing', $username.val());
