@@ -184,6 +184,10 @@ $(function () {
             }
         }
         if (data.user != last_user) {
+            if($username.val() != data.user){
+                var audio = new Audio('Message.mp3')
+                audio.play();
+            }
             $chat.append('<div class="well well-sm message-well"><strong>' + data.user + '</strong>: ' + data.msg + '</div>');
         }
         else {
